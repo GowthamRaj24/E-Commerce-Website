@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-    userId : "String",
-    displayName : "String" ,
-    email : "String" ,
-    password : "String" ,
-    image : "String" ,
-    address : "array" ,
-    phoneNumber : "String" ,
-    cartItems : "array" ,
-})
+    userId: { type: String, required: true },
+    displayName: { type: String , required: true},
+    email: { type: String , required: true},
+    password: { type: String, required: true },
+    image: { type: String , required: false},
+    address: { type: Array, required: false },
+    phoneNumber: { type: String, required: false },
+    cartItems: { type: Array, required: false },
+    reviews: { type: Array, required: false },
+    orders: { type: Array, required: false }
+});
 
-module.exports = mongoose.model('users' , userSchema);
+module.exports = mongoose.model('users', userSchema);

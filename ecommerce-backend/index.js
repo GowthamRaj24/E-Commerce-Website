@@ -5,6 +5,8 @@ const cors = require('cors');
 const { connection } = require('./db.js');
 const userRoutes = require('./routers/user');
 const productRoutes = require('./routers/products');
+const reviewRoutes = require('./routers/reviews');
+const orderRoutes = require('./routers/orders');
 
 connection();
 
@@ -19,6 +21,8 @@ app.use(express.json());
 
 app.use('/user', userRoutes.route);
 app.use('/products', productRoutes.route);
+app.use('/reviews', reviewRoutes.route);
+app.use('/orders', orderRoutes.route);
 
 
 app.listen(port , ()=>{
