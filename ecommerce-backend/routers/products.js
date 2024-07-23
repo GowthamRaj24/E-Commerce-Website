@@ -10,6 +10,7 @@ const sortProductAscending = require('../controllers/products/sortProductAscendi
 const  uploadProduct  = require('../controllers/products/UploadProduct');
 const sortProductDescending = require('../controllers/products/sortProductDescending');
 const addDiscount = require('../controllers/products/addDiscount');
+const fetchAllProducts = require('../controllers/products/fetchAllProducts');
 
 routes
     .post('/addProductToCart',addProductToCart.addProductToCart)
@@ -21,6 +22,7 @@ routes
     .post('/sortProductAscending', sortProductAscending.sortProductAscending)
     .post('/uploadProduct' , uploadProduct.uploadProduct)
     .post('/addDiscount', addDiscount.addDiscount)
+    .post('/fetchAllProducts' , fetchAllProducts.fetchAllProducts)
     .post('/sortProductDescending', sortProductDescending.sortProductDescending);
 
 
