@@ -8,7 +8,6 @@ const addDiscount = async (req, res) => {
         res.status(200).json({
             message: "Discount added successfully"
         });
-
     }
     catch (err) {
         res.status(500).json({

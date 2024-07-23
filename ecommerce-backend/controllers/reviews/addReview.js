@@ -11,16 +11,9 @@ const addReview = async (req, res) => {
         });
 
         const product = await productsSchema.findOne({ productId : req.body.productId });
-
-
-        console.log(product.reviews);
         
         product.reviews.push(review);
-
-        console.log(product.reviews);
-
         await productsSchema.findOneAndUpdate({ productId: req.body.productId }, { reviews: product.reviews });
-
 
         res.status(200).json({
             message: "Review added successfully"

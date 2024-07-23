@@ -19,7 +19,7 @@ app.use(cors(
 app.use(express.json());
 
 
-app.use('/user', userRoutes.route);
+app.use('/users', userRoutes.route);
 app.use('/products', productRoutes.route);
 app.use('/reviews', reviewRoutes.route);
 app.use('/orders', orderRoutes.route);

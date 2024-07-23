@@ -1,4 +1,5 @@
 const couponsSchema = require('../../models/coupons/couponsSchema');
+const usersSchema = require('../../models/users/usersSchema');
 
 const validateCoupon = async (req, res) => {
     try {
@@ -12,7 +13,7 @@ const validateCoupon = async (req, res) => {
         const user = coupon.userId.find(user => user.userId === req.body.userId);
         if (user) {
             return res.status(400).json({
-                message: "Coupon already used"
+                message: "Coupon already used by user"
             });
         }
         else{
@@ -22,6 +23,7 @@ const validateCoupon = async (req, res) => {
                 { userId: coupon.userId }
             );
         }
+
 
         res.status(200).json({
             message: "Coupon validated successfully"

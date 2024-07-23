@@ -10,7 +10,8 @@ const userSchema = mongoose.Schema({
     phoneNumber: { type: String, required: false },
     cartItems: { type: Array, required: false },
     reviews: { type: Array, required: false },
-    orders: { type: Array, required: false }
+    orders: { type: Array, required: false },
+    token : {type : String , required : false}
 });
 
 module.exports = mongoose.model('users', userSchema);

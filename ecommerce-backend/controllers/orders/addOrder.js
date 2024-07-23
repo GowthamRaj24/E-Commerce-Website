@@ -8,7 +8,10 @@ const addOrder = async (req, res) => {
             totalAmount: req.body.totalAmount,
             status: req.body.status,
             time : req.body.time,
-            userId: req.body.userId
+            userId: req.body.userId,
+            address: req.body.address,
+            discount : req.body.discount,
+            paymentMethod : req.body.paymentMethod
         });
 
         const user = await usersSchema.findOne({ userId: req.body.userId });

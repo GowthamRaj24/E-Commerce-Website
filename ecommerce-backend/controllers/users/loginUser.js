@@ -1,26 +1,32 @@
 const usersSchema = require('../../models/users/usersSchema');
+const jwt = require('jsonwebtoken');
 
 const loginUser = async (req, res) => {
     try {
-        const user = await usersSchema.findOne({
-            email: req.body.email,
-            password: req.body.password
-        });
+        const email = req.body.email;
+        const password = req.body.password;
 
-        if (user) {
-            res.status(200).json({
-                message: "Login Successful"
-            });
-        } else {
-            res.status(200).json({
-                message: "Invalid Credentials"
-            });
+        console.log(req.body);
+        const invalid = await usersSchema.findOne({ email: email });
+        const user = await usersSchema.findOne({ email: email , password: password });
+
+        if (!invalid) {
+            res.status(404).json({error:"User not found"});
+            return;
         }
-    } catch (err) {
-        res.status(500).json({
-            message: err.message
-        });
+        if (invalid && !user) {
+            res.status(404).json({error:"Invalid Credentials"});
+            return;
+        }
+
+        const token = jwt.sign({ id: user._id }, "secretkey");
+        res.status(200).json({ user, token });
+        res.end();
     }
-}
+    catch (error) {
+        res.status(404).json({"error in logging in": error?.message});
+
+    }
+};
 
 exports.loginUser = loginUser;
